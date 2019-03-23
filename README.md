@@ -26,4 +26,5 @@ GPIO Emulator
 
 4.run app.py
 ```py app.py```
+
 5.head into browser and type ```<Your computer ip>/<pin number>/<action>/```
