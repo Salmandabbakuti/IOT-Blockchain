@@ -12,7 +12,7 @@ for i in pinList:
     GPIO.setup(i, GPIO.OUT)
 
 # compile your smart contract with truffle first
-truffleFile = json.load(open('homeAutomation.json'))
+truffleFile = json.load(open('./build/contracts/homeAutomation.json'))
 abi = truffleFile['abi']
 bytecode = truffleFile['bytecode']
 
