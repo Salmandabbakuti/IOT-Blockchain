@@ -19,12 +19,17 @@ GPIO Emulator
 1.clone the repository into desktop
 
 2. install required dependencies
+
 ```pip install requirements.txt```
 
 3.instantiate Ganache-cli Private Network.
+
 ```ganache-cli```
 
-4.run app.py
+4.run app
+
 ```py app.py```
 
 5.head into browser and type ```<Your computer ip>/<pin number>/<action>/```
+
+<img align=center src="https://github.com/Salmandabbakuti/IoT-and-Blockchain/blob/master/Screenshot%20(79).png">
