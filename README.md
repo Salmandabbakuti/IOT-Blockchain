@@ -3,6 +3,8 @@ IoT needs blockchain
 # Tools and Libraries
 Truffle
 
+Pip
+
 Python3
 
 ganache-cli
@@ -15,7 +17,13 @@ GPIO Emulator
 
 # STEPS
 1.clone the repository into desktop
+
 2. install required dependencies
+```pip install requirements.txt```
+
 3.instantiate Ganache-cli Private Network.
-3.run app.py
-4.head into browser and type ```<Your computer ip>/<pin number>/<action>/```
+```ganache-cli```
+
+4.run app.py
+```py app.py```
+5.head into browser and type ```<Your computer ip>/<pin number>/<action>/```
