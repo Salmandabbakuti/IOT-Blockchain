@@ -38,8 +38,10 @@ wait a moment. this will take a minute or two.
 
 after deployment of contract in private network, you will see status of each pin in your command line.
 
-5.head into browser and type ```<Your computer ip>/<pin number>/<action>/```
+5.head into browser and type ```<Your computer ip>/``` control through GuI.
+
+<img align=center src="https://github.com/Salmandabbakuti/IoT-and-Blockchain/blob/master/Screenshot%20(81).png">
 
 basically, it will write particular pin status on blockchain and retrieve it from the chain. and then activate pin confiuaration accordingly.
 
-<img align=center src="https://github.com/Salmandabbakuti/IoT-and-Blockchain/blob/master/Screenshot%20(79).png">
+boom.
