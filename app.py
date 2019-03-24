@@ -2,7 +2,7 @@ import json
 from web3 import Web3, HTTPProvider
 from web3.contract import ConciseContract
 from EmulatorGUI import GPIO
-from flask import Flask
+from flask import Flask, render_template, request
 #from RPiSim import GPIO
 # GPIO setup
 GPIO.setmode(GPIO.BCM)
@@ -38,6 +38,13 @@ for i in pinList:
     print(i, 'Status: {}' .format(contract_instance.pinStatus(i)))
 
 app = Flask(__name__)
+@app.route("/")
+def index():
+    templateData = {
+            'title' : 'GPIO output Status!'
+            }
+    return render_template('index.html', **templateData)
+	
 @app.route("/<pin>/<action>")
 def control(pin, action):
     contract_instance = w3.eth.contract(abi=abi, address=contract_address, ContractFactoryClass=ConciseContract)
@@ -106,10 +113,12 @@ def control(pin, action):
     print(y)
     if y=="1":
         GPIO.output(actuator,GPIO.HIGH)
-        return "Turned On"
     else:
         GPIO.output(actuator,GPIO.LOW)
-        return "Turned Off"
+    templateData = {
+        'title': "GPIO Control"
+        }
+    return render_template('index.html', **templateData)
 
 if __name__ == '__main__':
     app.run(debug=True, port=80, host='0.0.0.0')
