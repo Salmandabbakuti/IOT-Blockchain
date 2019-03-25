@@ -22,6 +22,7 @@ web3.py
 
 ## Pip packages
 Flask
+
 GPIO Emulator
 
 ```pip install requirements.txt```
@@ -59,3 +60,5 @@ after deployment of contract in private network, you will see status of each pin
 basically, it will write particular pin status on blockchain and retrieve it from the chain. and then activate pin confiuaration accordingly.
 
 boom.
+
+ © Salman Dabbakuti
