@@ -14,12 +14,11 @@ ganache-cli
 
 ```npm install -g ganache-cli```
 
-web3.py
-
-```pip install web3```
-
 ## Pip packages
+
 Flask
+
+Web3.py 
 
 GPIO Emulator
 
