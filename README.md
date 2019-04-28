@@ -1,7 +1,14 @@
 # IoT-and-Blockchain
 
 # Pre-Requisites
-## Npm packages
+
+Python 2.7 + Python
+https://www.python.org/downloads/
+
+Git
+https://git-scm.com/downloads
+
+### Npm packages
 Truffle
 
 ```npm install -g truffle```
@@ -14,7 +21,7 @@ ganache-cli
 
 ```npm install -g ganache-cli```
 
-## Pip packages
+### Pip packages
 
 Flask
 
@@ -24,15 +31,14 @@ GPIO Emulator
 
 ```pip install requirements.txt```
 
-## Desktop App
-
-Python
-https://www.python.org/downloads/
-
 # STEPS
+
 *** Make Sure prerequisites are installed***
 
 1.clone the repository into desktop
+
+```git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git ```
+
 
 2. install required PiP dependencies
 
@@ -48,7 +54,7 @@ https://www.python.org/downloads/
 
 wait a moment. this will take a minute or two.
 
-after deployment of contract in private network, you will see status of each pin in your command line and Emulator on Screen.
+After deployment of contract in private network, you will see status of each pin in your command line and Emulator on Screen.
 
 5.head into browser and type ```<Your computer ip>/``` and control through UI.
 
