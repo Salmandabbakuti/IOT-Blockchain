@@ -1,3 +1,5 @@
+follow this medium article https://link.medium.com/J78zqfMHwW
+
 # IoT-and-Blockchain
 
 # Pre-Requisites
