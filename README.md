@@ -1,6 +1,6 @@
-follow this medium article https://link.medium.com/J78zqfMHwW
-
 # IoT-and-Blockchain
+
+follow this medium article https://link.medium.com/J78zqfMHwW
 
 # Pre-Requisites
 
