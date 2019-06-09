@@ -13,16 +13,20 @@ https://git-scm.com/downloads
 ### Npm packages
 Truffle
 
-```npm install -g truffle```
+```
+npm install -g truffle
+```
 
 Pip
 
-```npm i pip
+```
+npm i pip
 ```
 
 ganache-cli
 
-```npm install -g ganache-cli
+```
+npm install -g ganache-cli
 ```
 
 ### Pip packages
@@ -33,7 +37,8 @@ Web3.py
 
 GPIO Emulator
 
-```pip install requirements.txt
+```
+pip install requirements.txt
 ```
 
 # STEPS
@@ -42,23 +47,27 @@ GPIO Emulator
 
 1.clone the repository into desktop
 
-```git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git 
+```
+git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git 
 ```
 
 
 2. install required PiP dependencies
 
-```pip install requirements.txt
+```
+pip install requirements.txt
 ```
 
 3.instantiate Ganache-cli Private Network.
 
-```ganache-cli
+```
+ganache-cli
 ```
 
 4.run app
 
-```py app.py
+```
+py app.py
 ```
 
 wait a moment. this will take a minute or two.
