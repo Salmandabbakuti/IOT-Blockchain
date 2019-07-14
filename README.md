@@ -43,7 +43,7 @@ pip install requirements.txt
 
 # STEPS
 
-***Make Sure prerequisites are installed***
+>***Make Sure prerequisites are installed***
 
 1.clone the repository into desktop
 
