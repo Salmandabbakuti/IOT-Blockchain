@@ -1,7 +1,9 @@
-# IoT-and-Blockchain
+## IoT-and-Blockchain
 
-# Pre-Requisites
-## Npm packages
+#### Pre-Requisites
+
+##### Npm packages
+
 Truffle
 
 ```npm install -g truffle```
@@ -20,19 +22,19 @@ web3.py
 
 ```pip install web3```
 
-## Pip packages
+##### Pip packages
 Flask
 
 GPIO Emulator
 
 ```pip install requirements.txt```
 
-## Desktop App
+##### Desktop App
 
 Python
 https://www.python.org/downloads/
 
-# STEPS
+#### STEPS
 *** Make Sure prerequisites are installed***
 
 1.Clone the repository into desktop
