@@ -35,29 +35,40 @@ https://www.python.org/downloads/
 # STEPS
 *** Make Sure prerequisites are installed***
 
-1.clone the repository into desktop
+1.Clone the repository into desktop
 
-2. install required PiP dependencies
+```
+git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git
+```
+
+2. Install required PiP dependencies
 
 ```pip install requirements.txt```
 
-3.instantiate Ganache-cli Private Network.
+3.Instantiate Ganache-cli Private Network.
 
 ```ganache-cli```
 
-4.run app
+4.Run app
 
-```py app.py```
+```python app.py```
 
-wait a moment. this will take a minute or two.
+##### Running from Remote network(gochain):
 
-after deployment of contract in private network, you will see status of each pin in your command line and Emulator on Screen.
+** make sure you modifed ```appRemote.py``` with account private key and have some go tokens in it **
+
+```
+python appRemote.py
+```
+
+
+wait a moment. this will take a minute or two. after deployment of contract in private network, you will see status of each pin in your command line and Emulator on Screen.
 
 5.head into browser and type ```<Your computer ip>/``` and control through UI.
 
 <img align=center src="https://github.com/Salmandabbakuti/IoT-and-Blockchain/blob/master/Screenshot%20(81).png">
 
-basically, it will write particular pin status on blockchain and retrieve it from the chain. and then activate pin confiuaration accordingly.
+Basically, it will write particular pin status on blockchain and retrieve it from the chain. and then activate pin confiuaration accordingly.
 
 boom.
 
