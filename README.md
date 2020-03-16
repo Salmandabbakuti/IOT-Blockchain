@@ -4,34 +4,44 @@
 
 ##### Npm packages
 
-Truffle
+1. Truffle
 
-```npm install -g truffle```
+```
+npm install -g truffle
+```
 
-Pip
+2. Pip
 
-```curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py```
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 
-```python get-pip.py```
+python get-pip.py
+```
 
-ganache-cli
+3. ganache-cli
 
-```npm install -g ganache-cli```
+```
+npm install -g ganache-cli
+```
 
-web3.py
+4. web3.py
 
-```pip install web3```
+```
+pip install web3
+```
 
 ##### Pip packages
-Flask
+5. Flask
 
-GPIO Emulator
+6. GPIO Emulator
 
-```pip install requirements.txt```
+```
+pip install requirements.txt
+```
 
 ##### Desktop App
 
-Python
+7. Python
 https://www.python.org/downloads/
 
 #### STEPS
@@ -49,7 +59,9 @@ git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git
 
 3. Instantiate Ganache-cli Private Network.
 
-```ganache-cli```
+```
+ganache-cli
+```
 4. Complie Smart contract
 
 ```
@@ -57,7 +69,9 @@ truffle compile //or truffle.cmd compile for windows
 ```
 5. Run app
 
-```python app.py```
+```
+python app.py
+```
 
 ##### Running from Remote network(gochain):
 
