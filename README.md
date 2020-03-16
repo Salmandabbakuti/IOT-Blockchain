@@ -37,7 +37,7 @@ https://www.python.org/downloads/
 #### STEPS
 *** Make Sure prerequisites are installed***
 
-1.Clone the repository into desktop
+1. Clone the repository into desktop
 
 ```
 git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git
@@ -47,11 +47,15 @@ git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git
 
 ```pip install requirements.txt```
 
-3.Instantiate Ganache-cli Private Network.
+3. Instantiate Ganache-cli Private Network.
 
 ```ganache-cli```
+4. Complie Smart contract
 
-4.Run app
+```
+truffle compile //or truffle.cmd compile for windows
+```
+5. Run app
 
 ```python app.py```
 
@@ -64,9 +68,9 @@ python appRemote.py
 ```
 
 
-wait a moment. this will take a minute or two. after deployment of contract in private network, you will see status of each pin in your command line and Emulator on Screen.
+Wait a moment. this will take a minute or two. after deployment of contract in private network, you will see status of each pin in your command line and Emulator on Screen.
 
-5.head into browser and type ```<Your computer ip>/``` and control through UI.
+6. Head into browser and type ```<Your computer ip>/``` and control through UI.
 
 <img align=center src="https://github.com/Salmandabbakuti/IoT-and-Blockchain/blob/master/Screenshot%20(81).png">
 
