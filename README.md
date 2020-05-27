@@ -9,6 +9,7 @@ cd IoT-and-Blockchain
 npm install
 ganache-cli # local testnet for deployments
 truffle compile 
+pip install requirements.txt
 python app.py # Headover to your Computer IP on browser for UI
 
 ```
