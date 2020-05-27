@@ -15,7 +15,7 @@ python app.py # Headover to your Computer IP on browser for UI
 ```
 ##### UI:
 
-<img align="center" src="https://github.com/BCDevs/IoT-and-Blockchain/blob/master/assets/screen.png" width="80%">
+<img align="center" src="https://github.com/BCDevs/IoT-and-Blockchain/blob/master/assets/screen.png" width="90%">
 
 
  ##### Author   
