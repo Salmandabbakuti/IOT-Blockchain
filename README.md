@@ -13,6 +13,9 @@ pip install requirements.txt
 python app.py # Headover to your Computer IP on browser for UI
 
 ```
+##### UI:
+
+<img align="center" src="https://github.com/BCDevs/IoT-and-Blockchain/blob/master/assets/screen.jpg" width="80%">
 
 
  ##### Author   
