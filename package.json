@@ -4,16 +4,16 @@
   "description": "First implementation of enhanced security in IoT using Blockchain",
   "main": "",
   "scripts": {
-    "install": "npm install",
+    "build": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "complie":"truffle compile",
+    "complie": "truffle compile",
     "start": "ganche-cli"
-    },
+  },
   "author": "Salman Dabbakuti",
   "license": "ISC",
   "dependencies": {
-    "truffle":"^4.1.17",
-    "pip" : "0.0.1",
-    "ganache-cli":"^6.9.0"
+    "ganache-cli": "^6.9.1",
+    "pip": "0.0.1",
+    "truffle": "^4.1.17"
   }
 }

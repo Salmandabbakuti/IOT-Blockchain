@@ -9,9 +9,10 @@ cd IoT-and-Blockchain
 npm install
 ganache-cli # local testnet for deployments
 truffle compile 
-pip install requirements.txt
+pip install -r requirements.txt
 python app.py # Headover to your Computer IP on browser for UI
 
+python appRemote.py # Needs to add your private key inorder to work.
 ```
 ##### UI:
 
