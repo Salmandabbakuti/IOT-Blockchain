@@ -16,7 +16,7 @@ python appRemote.py # Needs to add your private key inorder to work.
 ```
 ##### UI:
 
-<img align="center" src="https://github.com/BCDevs/IoT-and-Blockchain/blob/master/assets/screen.png" width="90%">
+<img align="center" src="https://github.com/Salmandabbakuti/IoT-and-Blockchain/blob/master/assets/screen.png" width="90%">
 
 
  ##### Author   
