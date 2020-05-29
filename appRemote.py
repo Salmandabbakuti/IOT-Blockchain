@@ -7,7 +7,7 @@ from flask import Flask, render_template, request
 # GPIO setup
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-pinList = [14, 15, 18, 23, 24, 25, 8,7, 12, 16, 20, 21, 2, 3, 4, 17, 27, 22, 10, 9, 11, 5, 6, 13, 19, 26]
+pinList = [14, 15, 18, 23, 24, 25, 8, 7, 12, 16, 20, 21, 2, 3, 4, 17, 27, 22, 10, 9, 11, 5, 6, 13, 19, 26]
 for i in pinList:
     GPIO.setup(i, GPIO.OUT)
 w3 = Web3(HTTPProvider("https://testnet-rpc.gochain.io/"))
@@ -15,7 +15,7 @@ w3 = Web3(HTTPProvider("https://testnet-rpc.gochain.io/"))
 truffleFile = json.load(open('./build/contracts/homeAutomation.json'))
 abi = truffleFile['abi']
 bytecode = truffleFile['bytecode']
-key="<private key with 0x prefix>"
+key= input("Enter your account private key with 0x prefix. We do not store it anywhere and used for this session only: ")
 acct = w3.eth.account.privateKeyToAccount(key)
 account_address= acct.address
 # web3.py instance
