@@ -1,10 +1,11 @@
+#  * SPDX-License-Identifier: MIT
+#  * Licensed to @Author: Salman Dabbakuti(https://github.com/Salmandabbakuti)
+#  * See the License for the specific language governing permissions and limitations under the License.
+
 import json
 from web3 import Web3, HTTPProvider
-from web3.contract import ConciseContract
 from EmulatorGUI import GPIO
-from flask import Flask, render_template, request
-#from RPiSim import GPIO
-# GPIO setup
+from flask import Flask, render_template
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 pinList = [14, 15, 18, 23, 24, 25, 8,7, 12, 16, 20, 21, 2, 3, 4, 17, 27, 22, 10, 9, 11, 5, 6, 13, 19, 26]
@@ -19,36 +20,31 @@ bytecode = truffleFile['bytecode']
 # web3.py instance
 w3 = Web3(HTTPProvider("http://localhost:8545/"))
 
-
 # Instantiate and deploy contract
 contract = w3.eth.contract(abi=abi, bytecode=bytecode)
 
 # Get transaction hash from deployed contract
-tx_hash = contract.deploy(transaction={'from': w3.eth.accounts[0], 'gas': 410000})
+tx_hash = contract.constructor().transact({'from': w3.eth.accounts[0], 'gas': 410000})
 
 # Get tx receipt to get contract address
-tx_receipt = w3.eth.getTransactionReceipt(tx_hash)
-contract_address = tx_receipt['contractAddress']
+tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 
-# Contract instance in concise mode
-contract_instance = w3.eth.contract(abi=abi, address=contract_address, ContractFactoryClass=ConciseContract)
+# Deployed Contract instance
+contract_instance = w3.eth.contract(abi=abi, address=tx_receipt.contractAddress)
 
-#Contro Interface
+#Control Interface
 for i in pinList:
-    print(i, 'Status: {}' .format(contract_instance.pinStatus(i)))
+    print(i, 'Pin Status: {}' .format(contract_instance.functions.pinStatus(i).call()))
 
 app = Flask(__name__)
+
 @app.route("/")
 def index():
-    templateData = {
-            'title' : 'GPIO output Status!'
-            }
-    return render_template('index.html', **templateData)
+    return render_template('index.html')
 	
 @app.route("/<pin>/<action>")
 def control(pin, action):
-    contract_instance = w3.eth.contract(abi=abi, address=contract_address, ContractFactoryClass=ConciseContract)
-    
+    #Actuator configuration
     if pin=='fourteen':
         actuator=14
     if pin=='fifteen':
@@ -102,26 +98,21 @@ def control(pin, action):
     if pin=='twentysix':
         actuator=26
 
-
+    #Control interface
     if action=='on':
          config=1
     if action=='off':
         config=0
-    contract_instance.control(actuator,config,transact={'from': w3.eth.accounts[0]})
-    print("Transaction its Way..")
-    y=format(contract_instance.pinStatus(actuator))
-    print(y)
+    tx_hash = contract_instance.functions.control(actuator,config).transact({'from': w3.eth.accounts[0]})
+    print('Transaction submitted:', tx_hash.hex())
+    y=format(contract_instance.functions.pinStatus(actuator).call())
+    print('Pin Status Changed: ',y)
     if y=="1":
         GPIO.output(actuator,GPIO.HIGH)
     else:
         GPIO.output(actuator,GPIO.LOW)
-    templateData = {
-        'title': "GPIO Control"
-        }
-    return render_template('index.html', **templateData)
+
+    return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=80, host='0.0.0.0')
-     
-	
-#Developed by Salman Dabbakuti
+    app.run(port=8000, host='0.0.0.0')
