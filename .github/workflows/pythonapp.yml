@@ -8,15 +8,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup Node.js for use with actions
-      uses: actions/setup-node@v1.1.0
-      with:
-        node-version: 12
-        cache: 'npm'
-    - run: npm install
-    - run: npm test
-
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
