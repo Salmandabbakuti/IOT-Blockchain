@@ -1,3 +1,3 @@
-flask
-web3
-simplejson
+flask~=2.0.0
+web3==5.22.0
+simplejson~=3.17.2

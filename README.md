@@ -3,6 +3,13 @@
 - [Demonstration Article](https://link.medium.com/TcNvHHZoY1)
 
 ##### Quick Demo
+>Note: *Windows Build Tools is required to install web3. Install through Powershell(Admin) if not installed already*
+
+```
+npm install -g windows-build-tools
+```
+
+
 ```
 git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git
 cd IoT-and-Blockchain
@@ -10,11 +17,10 @@ npm install
 ganache-cli # local testnet for deployments
 truffle compile 
 pip install -r requirements.txt
-python app.py # Headover to your Computer IP on browser for UI
+python app.py # Headover to your http://localhost:8000
 
 python appRemote.py # Needs to add your private key inorder to work.
 ```
-##### UI:
 
 <img align="center" src="https://github.com/Salmandabbakuti/IoT-and-Blockchain/blob/master/assets/screen.png" width="90%">
 

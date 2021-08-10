@@ -1,0 +1,20 @@
+body {
+  background-image: url(bg.jpg);
+  font-family: "Courgette", cursive;
+  background-attachment: fixed;
+  color: white;
+}
+.button {
+  text-decoration: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #cccccc;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-radius: 5px;
+}
+.button:hover {
+  opacity: 0.7;
+}
