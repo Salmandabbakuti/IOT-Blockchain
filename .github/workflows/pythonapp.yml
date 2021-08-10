@@ -12,7 +12,7 @@ jobs:
     - name: Setup Node.js for use with actions
       uses: actions/setup-node@v1.1.0
       with:
-        node-version: 12.x
+        node-version: 12
         cache: 'npm'
     - run: npm install
     - run: npm test
