@@ -18,8 +18,5 @@ jobs:
         python-version: 3.7
     - name: Install dependencies
       run: |
-        npm install -g ganache-cli
-        npm i pip
-        npm install -g truffle
         python -m pip install --upgrade pip
         pip install -r requirements.txt
