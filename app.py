@@ -4,7 +4,8 @@
 
 import json
 from web3 import Web3, HTTPProvider
-from EmulatorGUI import GPIO
+# import RPi.GPIO as GPIO # for real rasp-pi
+from RPiSim.GPIO import GPIO
 from flask import Flask, render_template
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
