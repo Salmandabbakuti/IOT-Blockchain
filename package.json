@@ -4,16 +4,18 @@
   "description": "First implementation of enhanced security in IoT using Blockchain",
   "main": "",
   "scripts": {
-    "build": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "complie": "truffle compile",
-    "start": "ganche-cli"
+    "start-node": "npx hardhat node",
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat deploy"
   },
   "author": "Salman Dabbakuti",
   "license": "ISC",
-  "dependencies": {
-    "ganache-cli": "^6.9.1",
+  "dependencies": {},
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "hardhat": "2.9.2",
     "pip": "0.0.1",
-    "truffle": "^4.1.17"
+    "yarn": "1.22.18"
   }
 }

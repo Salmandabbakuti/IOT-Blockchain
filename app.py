@@ -13,10 +13,10 @@ pinList = [14, 15, 18, 23, 24, 25, 8,7, 12, 16, 20, 21, 2, 3, 4, 17, 27, 22, 10,
 for i in pinList:
     GPIO.setup(i, GPIO.OUT)
 
-# compile your smart contract with truffle first
-truffleFile = json.load(open('./build/contracts/homeAutomation.json'))
-abi = truffleFile['abi']
-bytecode = truffleFile['bytecode']
+# fetching abi and bytecode from artifacts file
+artifacts = json.load(open('./artifacts/contracts/PinController.sol/PinController.json'))
+abi = artifacts['abi']
+bytecode = artifacts['bytecode']
 
 # web3.py instance
 w3 = Web3(HTTPProvider("http://localhost:8545/"))
@@ -48,67 +48,69 @@ def control(pin, action):
     #Actuator configuration
     if pin=='fourteen':
         actuator=14
-    if pin=='fifteen':
+    elif pin=='fifteen':
         actuator=15
-    if pin=='eighteen':
+    elif pin=='eighteen':
         actuator=18
-    if pin=='twentythree':
+    elif pin=='twentythree':
         actuator=23
-    if pin=='twentyfour':
+    elif pin=='twentyfour':
         actuator=24
-    if pin=='twentyfive':
+    elif pin=='twentyfive':
         actuator=25
-    if pin=='eight':
+    elif pin=='eight':
         actuator=8
-    if pin=='seven':
+    elif pin=='seven':
         actuator=7
-    if pin=='twelve':
+    elif pin=='twelve':
         actuator=12
-    if pin=='sixteen':
+    elif pin=='sixteen':
         actuator=16
-    if pin=='twenty':
+    elif pin=='twenty':
         actuator=20
-    if pin=='twentyone':
+    elif pin=='twentyone':
         actuator=21
-    if pin=='two':
+    elif pin=='two':
         actuator=2
-    if pin=='three':
+    elif pin=='three':
         actuator=3
-    if pin=='four':
+    elif pin=='four':
         actuator=4
-    if pin=='seventeen':
+    elif pin=='seventeen':
         actuator=17
-    if pin=='twentyseven':
+    elif pin=='twentyseven':
         actuator=27
-    if pin=='twentytwo':
+    elif pin=='twentytwo':
         actuator=22
-    if pin=='ten':
+    elif pin=='ten':
         actuator=10
-    if pin=='nine':
+    elif pin=='nine':
         actuator=9
-    if pin=='eleven':
+    elif pin=='eleven':
         actuator=11
-    if pin=='five':
+    elif pin=='five':
         actuator=5
-    if pin=='six':
+    elif pin=='six':
         actuator=6
-    if pin=='thirteen':
+    elif pin=='thirteen':
         actuator=13
-    if pin=='nineteen':
+    elif pin=='nineteen':
         actuator=19
-    if pin=='twentysix':
+    elif pin=='twentysix':
         actuator=26
+    else:
+        return render_template('index.html')
 
     #Control interface
     if action=='on':
-         config=1
-    if action=='off':
-        config=0
-    tx_hash = contract_instance.functions.control(actuator,config).transact({'from': w3.eth.accounts[0]})
+         is_active = True
+    else:
+        is_active = False
+    tx_hash = contract_instance.functions.controlPin(actuator, is_active).transact({'from': w3.eth.accounts[0]})
     print('Transaction submitted:', tx_hash.hex())
-    y=format(contract_instance.functions.pinStatus(actuator).call())
-    print('Pin Status Changed: ',y)
-    if y=="1":
+    pin_status = format(contract_instance.functions.pinStatus(actuator).call())
+    print(f'Pin {actuator} status changed to {pin_status}')
+    if pin_status == 'True':
         GPIO.output(actuator,GPIO.HIGH)
     else:
         GPIO.output(actuator,GPIO.LOW)
@@ -116,4 +118,4 @@ def control(pin, action):
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(port=8000, host='0.0.0.0')
+    app.run(port=8000, host='localhost')

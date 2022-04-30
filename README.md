@@ -13,9 +13,12 @@ npm install -g windows-build-tools
 ```
 git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git
 cd IoT-and-Blockchain
-npm install
-ganache-cli # local testnet for deployments
-truffle compile 
+yarn install
+yarn start-node # local testnet for deployments
+yarn compile # compile contract
+yarn deploy # deploy contract
+
+
 pip install -r requirements.txt
 python app.py # Headover to your http://localhost:8000
 

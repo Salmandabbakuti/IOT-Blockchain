@@ -8,6 +8,8 @@ bin-release/
 .settings/
 node_modules/
 build/
+artifacts/
+cache/
 package-lock.json
 __pycache__/
 # Executables

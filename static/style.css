@@ -4,7 +4,7 @@ body {
   background-attachment: fixed;
   color: white;
 }
-.button {
+a {
   text-decoration: none;
   background-color: #4caf50;
   color: white;
@@ -15,6 +15,6 @@ body {
   border-bottom: 1px solid #333333;
   border-radius: 5px;
 }
-.button:hover {
+a:hover {
   opacity: 0.7;
 }
