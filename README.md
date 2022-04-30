@@ -13,13 +13,13 @@ npm install -g windows-build-tools
 ```
 git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git
 cd IoT-and-Blockchain
-npm install
-ganache-cli # local testnet for deployments
-truffle compile 
-pip install -r requirements.txt
-python app.py # Headover to your http://localhost:8000
+yarn install
+yarn start-node # local testnet for deployments
+yarn compile # compile contract
+yarn deploy # deploy contract
 
-python appRemote.py # Needs to add your private key inorder to work.
+pip install -r requirements.txt
+python app.py # run app: open localhost:8000
 ```
 
 <img align="center" src="https://github.com/Salmandabbakuti/IoT-and-Blockchain/blob/master/assets/screen.png" width="90%">
