@@ -18,11 +18,8 @@ yarn start-node # local testnet for deployments
 yarn compile # compile contract
 yarn deploy # deploy contract
 
-
 pip install -r requirements.txt
-python app.py # Headover to your http://localhost:8000
-
-python appRemote.py # Needs to add your private key inorder to work.
+python app.py # run app: open localhost:8000
 ```
 
 <img align="center" src="https://github.com/Salmandabbakuti/IoT-and-Blockchain/blob/master/assets/screen.png" width="90%">
