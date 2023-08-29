@@ -7,114 +7,86 @@ from web3 import Web3, HTTPProvider
 # import RPi.GPIO as GPIO # for real rasp-pi
 from RPiSim.GPIO import GPIO
 from flask import Flask, render_template
+
+# Pin mapping
+pin_mapping = {
+    'fourteen': 14,
+    'fifteen': 15,
+    'eighteen': 18,
+    'twentythree': 23,
+    'twentyfour': 24,
+    'twentyfive': 25,
+    'eight': 8,
+    'seven': 7,
+    'twelve': 12,
+    'sixteen': 16,
+    'twenty': 20,
+    'twentyone': 21,
+    'two': 2,
+    'three': 3,
+    'four': 4,
+    'seventeen': 17,
+    'twentyseven': 27,
+    'twentytwo': 22,
+    'ten': 10,
+    'nine': 9,
+    'eleven': 11,
+    'five': 5,
+    'six': 6,
+    'thirteen': 13,
+    'nineteen': 19,
+    'twentysix': 26
+}
+
+# Set up GPIO pins
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-pinList = [14, 15, 18, 23, 24, 25, 8,7, 12, 16, 20, 21, 2, 3, 4, 17, 27, 22, 10, 9, 11, 5, 6, 13, 19, 26]
-for i in pinList:
-    GPIO.setup(i, GPIO.OUT)
+pinList = list(pin_mapping.values())
+for pin in pinList:
+    GPIO.setup(pin, GPIO.OUT)
 
-# fetching abi and bytecode from artifacts file
-artifacts = json.load(open('./artifacts/contracts/PinController.sol/PinController.json'))
+# Load contract artifacts
+artifacts_path = './artifacts/contracts/PinController.sol/PinController.json'
+with open(artifacts_path) as artifacts_file:
+    artifacts = json.load(artifacts_file)
 abi = artifacts['abi']
 bytecode = artifacts['bytecode']
 
-# web3.py instance
+# Initialize web3.py instance
 w3 = Web3(HTTPProvider("http://localhost:8545/"))
 
-# Instantiate and deploy contract
+# Deploy contract and get contract instance
 contract = w3.eth.contract(abi=abi, bytecode=bytecode)
-
-# Get transaction hash from deployed contract
 tx_hash = contract.constructor().transact()
-
-# Get tx receipt to get contract address
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+contract_instance = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
 
-# Deployed Contract instance
-contract_instance = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi, )
-
-#Control Interface
+# Get initial pin status
 for i in pinList:
-    print(i, 'Pin Status: {}' .format(contract_instance.functions.pinStatus(i).call()))
+    pin_status = contract_instance.functions.pinStatus(i).call()
+    print(f'Pin {i} status is {pin_status}')
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
     return render_template('index.html')
-	
+
 @app.route("/<pin_id>/<action>")
 def set_pin_status(pin_id, action):
-    #Actuator configuration
-    if pin_id=='fourteen':
-        pin_number=14
-    elif pin_id=='fifteen':
-        pin_number=15
-    elif pin_id=='eighteen':
-        pin_number=18
-    elif pin_id=='twentythree':
-        pin_number=23
-    elif pin_id=='twentyfour':
-        pin_number=24
-    elif pin_id=='twentyfive':
-        pin_number=25
-    elif pin_id=='eight':
-        pin_number=8
-    elif pin_id=='seven':
-        pin_number=7
-    elif pin_id=='twelve':
-        pin_number=12
-    elif pin_id=='sixteen':
-        pin_number=16
-    elif pin_id=='twenty':
-        pin_number=20
-    elif pin_id=='twentyone':
-        pin_number=21
-    elif pin_id=='two':
-        pin_number=2
-    elif pin_id=='three':
-        pin_number=3
-    elif pin_id=='four':
-        pin_number=4
-    elif pin_id=='seventeen':
-        pin_number=17
-    elif pin_id=='twentyseven':
-        pin_number=27
-    elif pin_id=='twentytwo':
-        pin_number=22
-    elif pin_id=='ten':
-        pin_number=10
-    elif pin_id=='nine':
-        pin_number=9
-    elif pin_id=='eleven':
-        pin_number=11
-    elif pin_id=='five':
-        pin_number=5
-    elif pin_id=='six':
-        pin_number=6
-    elif pin_id=='thirteen':
-        pin_number=13
-    elif pin_id=='nineteen':
-        pin_number=19
-    elif pin_id=='twentysix':
-        pin_number=26
-    else:
+    if pin_id not in pin_mapping:
         return render_template('index.html')
 
-    #Control interface
-    if action=='on':
-         pin_status = 1
-    else:
-        pin_status = 0
+    pin_number = pin_mapping[pin_id]
+    pin_status = 1 if action == 'on' else 0
+
     tx_hash = contract_instance.functions.setPinStatus(pin_number, pin_status).transact({'from': w3.eth.accounts[0]})
     print('Transaction submitted:', tx_hash.hex())
-    pin_status = format(contract_instance.functions.pinStatus(pin_number).call())
-    print(f'Pin {pin_number} status changed to {pin_status}')
-    if pin_status == "1":
-        GPIO.output(pin_number,GPIO.HIGH)
-    else:
-        GPIO.output(pin_number,GPIO.LOW)
 
+    pin_status = contract_instance.functions.pinStatus(pin_number).call()
+    print(f'Pin {pin_number} status changed to {pin_status}')
+
+    GPIO.output(pin_number, GPIO.HIGH if pin_status else GPIO.LOW)
     return render_template('index.html')
 
 if __name__ == '__main__':

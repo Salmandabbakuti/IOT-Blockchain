@@ -5,6 +5,10 @@ body {
   color: white;
 }
 
+.off-switch {
+  background-color: red;
+}
+
 a {
   text-decoration: none;
   background-color: #4caf50;
