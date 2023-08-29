@@ -25,13 +25,13 @@ w3 = Web3(HTTPProvider("http://localhost:8545/"))
 contract = w3.eth.contract(abi=abi, bytecode=bytecode)
 
 # Get transaction hash from deployed contract
-tx_hash = contract.constructor().transact({'from': w3.eth.accounts[0], 'gas': 410000})
+tx_hash = contract.constructor().transact()
 
 # Get tx receipt to get contract address
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 
 # Deployed Contract instance
-contract_instance = w3.eth.contract(abi=abi, address=tx_receipt.contractAddress)
+contract_instance = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi, )
 
 #Control Interface
 for i in pinList:
@@ -43,77 +43,77 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 	
-@app.route("/<pin>/<action>")
-def control(pin, action):
+@app.route("/<pin_id>/<action>")
+def set_pin_status(pin_id, action):
     #Actuator configuration
-    if pin=='fourteen':
-        actuator=14
-    elif pin=='fifteen':
-        actuator=15
-    elif pin=='eighteen':
-        actuator=18
-    elif pin=='twentythree':
-        actuator=23
-    elif pin=='twentyfour':
-        actuator=24
-    elif pin=='twentyfive':
-        actuator=25
-    elif pin=='eight':
-        actuator=8
-    elif pin=='seven':
-        actuator=7
-    elif pin=='twelve':
-        actuator=12
-    elif pin=='sixteen':
-        actuator=16
-    elif pin=='twenty':
-        actuator=20
-    elif pin=='twentyone':
-        actuator=21
-    elif pin=='two':
-        actuator=2
-    elif pin=='three':
-        actuator=3
-    elif pin=='four':
-        actuator=4
-    elif pin=='seventeen':
-        actuator=17
-    elif pin=='twentyseven':
-        actuator=27
-    elif pin=='twentytwo':
-        actuator=22
-    elif pin=='ten':
-        actuator=10
-    elif pin=='nine':
-        actuator=9
-    elif pin=='eleven':
-        actuator=11
-    elif pin=='five':
-        actuator=5
-    elif pin=='six':
-        actuator=6
-    elif pin=='thirteen':
-        actuator=13
-    elif pin=='nineteen':
-        actuator=19
-    elif pin=='twentysix':
-        actuator=26
+    if pin_id=='fourteen':
+        pin_number=14
+    elif pin_id=='fifteen':
+        pin_number=15
+    elif pin_id=='eighteen':
+        pin_number=18
+    elif pin_id=='twentythree':
+        pin_number=23
+    elif pin_id=='twentyfour':
+        pin_number=24
+    elif pin_id=='twentyfive':
+        pin_number=25
+    elif pin_id=='eight':
+        pin_number=8
+    elif pin_id=='seven':
+        pin_number=7
+    elif pin_id=='twelve':
+        pin_number=12
+    elif pin_id=='sixteen':
+        pin_number=16
+    elif pin_id=='twenty':
+        pin_number=20
+    elif pin_id=='twentyone':
+        pin_number=21
+    elif pin_id=='two':
+        pin_number=2
+    elif pin_id=='three':
+        pin_number=3
+    elif pin_id=='four':
+        pin_number=4
+    elif pin_id=='seventeen':
+        pin_number=17
+    elif pin_id=='twentyseven':
+        pin_number=27
+    elif pin_id=='twentytwo':
+        pin_number=22
+    elif pin_id=='ten':
+        pin_number=10
+    elif pin_id=='nine':
+        pin_number=9
+    elif pin_id=='eleven':
+        pin_number=11
+    elif pin_id=='five':
+        pin_number=5
+    elif pin_id=='six':
+        pin_number=6
+    elif pin_id=='thirteen':
+        pin_number=13
+    elif pin_id=='nineteen':
+        pin_number=19
+    elif pin_id=='twentysix':
+        pin_number=26
     else:
         return render_template('index.html')
 
     #Control interface
     if action=='on':
-         is_active = True
+         pin_status = 1
     else:
-        is_active = False
-    tx_hash = contract_instance.functions.controlPin(actuator, is_active).transact({'from': w3.eth.accounts[0]})
+        pin_status = 0
+    tx_hash = contract_instance.functions.setPinStatus(pin_number, pin_status).transact({'from': w3.eth.accounts[0]})
     print('Transaction submitted:', tx_hash.hex())
-    pin_status = format(contract_instance.functions.pinStatus(actuator).call())
-    print(f'Pin {actuator} status changed to {pin_status}')
-    if pin_status == 'True':
-        GPIO.output(actuator,GPIO.HIGH)
+    pin_status = format(contract_instance.functions.pinStatus(pin_number).call())
+    print(f'Pin {pin_number} status changed to {pin_status}')
+    if pin_status == "1":
+        GPIO.output(pin_number,GPIO.HIGH)
     else:
-        GPIO.output(actuator,GPIO.LOW)
+        GPIO.output(pin_number,GPIO.LOW)
 
     return render_template('index.html')
 

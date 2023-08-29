@@ -1,32 +1,72 @@
-## IoT-and-Blockchain
+# IoT-and-Blockchain
 
-- [Demonstration Article](https://link.medium.com/TcNvHHZoY1)
+A simple IoT and Blockchain based application to demonstrate the use of blockchain in IoT.
 
-##### Quick Demo
->Note: *Windows Build Tools is required to install web3. Install through Powershell(Admin) if not installed already*
+## Getting Started
 
-```
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/download/)
+- [Python](https://www.python.org/downloads/)
+- Windows 8+ or MacOS X
+
+> Note: _Windows Build Tools is required to install web3. Install through Powershell(Admin) if not installed already_
+
+```bash
 npm install -g windows-build-tools
 ```
 
+### Steps
 
+Before starting with app, you need to compile the smart contract and start a local blockchain. Follow the steps below to do so:
+
+1. Install required dependencies:
+
+```bash
+npm install
 ```
-git clone https://github.com/Salmandabbakuti/IoT-and-Blockchain.git
-cd IoT-and-Blockchain
-yarn install
-yarn start-node # local testnet for deployments
-yarn compile # compile contract
-yarn deploy # deploy contract
 
+2. Start a local blockchain using Hardhat:
+
+```bash
+npx hardhat node
+```
+
+3. Compile contract in a separate terminal:
+
+```bash
+npx hardhat compile
+```
+
+4. Install python dependencies and start the app:
+
+```bash
 pip install -r requirements.txt
-python app.py # run app: open localhost:8000
+
+python app.py
 ```
 
-<img align="center" src="https://github.com/Salmandabbakuti/IoT-and-Blockchain/blob/master/assets/screen.png" width="90%">
+Open http://localhost:8000 in your browser to see the app and Interact with the IoT device.
 
+### Demo
 
- ##### Author   
+![screen](https://github.com/Salmandabbakuti/IoT-and-Blockchain/assets/29351207/4e684842-095e-4472-85fc-5621295ce6a3)
 
-##### :wave: [Salman Dabbakuti](https://salmandabbakuti.github.io)
+## Built With
 
-<a href="https://www.buymeacoffee.com/Salmandabbakuti" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>    
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/) - The web framework used for the backend
+- [Web3.py](https://web3py.readthedocs.io/en/stable/) - Python library for interacting with Ethereum blockchain
+- [Hardhat](https://hardhat.org/) - Ethereum development environment for compiling, testing, deploying, and interacting with smart contracts
+- [Solidity](https://docs.soliditylang.org/en/v0.8.4/) - Ethereum's smart contract programming language
+- [GPIO Simulator](https://pypi.org/project/GPIOSimulator/) - Python library for simulating GPIO pins
+- [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) - Python library for accessing GPIO pins on Raspberry Pi
+
+## Safety
+
+This is experimental software and subject to change over time.
+
+This is a proof of concept and is not ready for production use. It is not audited and has not been tested for security. Use at your own risk. I do not give any warranties and will not be liable for any loss incurred through any use of this codebase.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

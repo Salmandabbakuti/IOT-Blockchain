@@ -8,10 +8,14 @@ contract PinController {
         owner = msg.sender;
     }
 
-    mapping(uint8 => bool) public pinStatus;
+    enum PinStatus {
+        Off,
+        On
+    }
+    mapping(uint8 => PinStatus) public pinStatus;
 
-    function controlPin(uint8 _pin, bool _isActive) public {
+    function setPinStatus(uint8 _pin, PinStatus _pinStatus) public {
         require(msg.sender == owner);
-        pinStatus[_pin] = _isActive;
+        pinStatus[_pin] = _pinStatus;
     }
 }

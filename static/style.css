@@ -1,9 +1,10 @@
 body {
-  background-image: url(bg.jpg);
+  background-image: url("background.jpg");
   font-family: "Courgette", cursive;
   background-attachment: fixed;
   color: white;
 }
+
 a {
   text-decoration: none;
   background-color: #4caf50;
@@ -15,6 +16,7 @@ a {
   border-bottom: 1px solid #333333;
   border-radius: 5px;
 }
+
 a:hover {
   opacity: 0.7;
 }

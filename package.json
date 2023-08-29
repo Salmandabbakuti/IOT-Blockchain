@@ -13,10 +13,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.0.2",
-    "hardhat": "2.9.2",
-    "ethers": "5.5.4",
-    "pip": "0.0.1",
-    "yarn": "1.22.18"
+    "hardhat": "2.17.2",
+    "pip": "0.0.1"
   }
 }

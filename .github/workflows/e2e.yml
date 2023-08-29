@@ -1,0 +1,64 @@
+name: e2e-test
+
+on:
+  push:
+    branches: [main, develop, "feat/*"]
+  pull_request:
+    branches: [main, develop, "feat/*"]
+
+jobs:
+  nodejs-step:
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+        os: [macos-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      # - name: Install Windows Build Tools (if needed)
+      #   if: matrix.os == 'windows-latest'
+      #   run: |
+      #     npm install -g windows-build-tools
+      - name: Install Node.js dependencies
+        run: npm install
+      - name: Compile contract
+        run: npx hardhat compile
+      - name: Start local blockchain
+        run: npx hardhat node & sleep 5
+
+  python-step:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        os: [macos-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+      # - name: Start App
+      #   run: python app.py & sleep 5
+      # Add your testing steps here
+      # - name: Simulate GPIO 14 ON request
+      #   run: |
+      #     if [[ "${matrix.os}" == "windows-latest" ]]; then
+      #       curl http://localhost:8000/fourteen/on
+      #     else
+      #       curl http://host.docker.internal:8000/fourteen/on
+      #     fi
