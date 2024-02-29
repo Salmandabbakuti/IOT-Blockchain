@@ -8,7 +8,8 @@ A simple IoT and Blockchain based application to demonstrate the use of blockcha
 
 - [Node.js](https://nodejs.org/en/download/)
 - [Python](https://www.python.org/downloads/)
-- Windows 8+ or MacOS X
+- Windows 8+ (for simulating GPIO pins on Windows), Raspberry Pi (for using actual GPIO pins)
+- [Windows Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) - Only for Windows (Simulating GPIO pins on Windows)
 
 > Note: _Windows Build Tools is required to install web3. Install through Powershell(Admin) if not installed already_
 

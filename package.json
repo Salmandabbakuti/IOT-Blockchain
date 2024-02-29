@@ -1,6 +1,6 @@
 {
   "name": "iot-blockchain-demo",
-  "version": "1.0.0",
+  "version": "2.2.0",
   "description": "First implementation of enhanced security in IoT using Blockchain",
   "main": "",
   "scripts": {
@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "hardhat": "2.17.2",
+    "hardhat": "2.20.1",
     "pip": "0.0.1"
   }
 }

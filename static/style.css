@@ -1,5 +1,5 @@
 body {
-  background-image: url("background.jpg");
+  background: url("background.jpg");
   font-family: "Courgette", cursive;
   background-attachment: fixed;
   color: white;

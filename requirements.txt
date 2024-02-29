@@ -1,5 +1,5 @@
-flask~=2.3.3
-web3==6.9.0
-simplejson==3.19.1
+flask~=3.0.2
+web3==6.15.1
+simplejson==3.19.2
 GPIOSimulator==0.1 #Rasp-pi Simulator package
 #RPi.GPIO==0.7.0 #use when connected to real rasp-pi
