@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "hardhat": "2.20.1",
+    "hardhat": "2.22.15",
     "pip": "0.0.1"
   }
 }
