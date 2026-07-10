@@ -1,7 +1,7 @@
 {
-  "name": "iot-blockchain-demo",
+  "name": "iot-blockchain-hh",
   "version": "2.3.0",
-  "description": "First implementation of enhanced security in IoT using Blockchain",
+  "description": "A Hardhat project for IoT Blockchain",
   "main": "",
   "type": "module",
   "scripts": {
