@@ -87,10 +87,16 @@ def set_pin_status(pin_id, action):
     tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
     print('Transaction confirmed in block:', tx_receipt.blockNumber)
 
-    pin_status = contract_instance.functions.pinStatus(pin_number).call()
-    print(f'Pin {pin_number} status changed to {pin_status}')
+    rich_logs = contract_instance.events.PinStatusChanged().process_receipt(tx_receipt)
 
-    GPIO.output(pin_number, GPIO.HIGH if pin_status else GPIO.LOW)
+    if rich_logs:
+        event = rich_logs[0]['args']
+        pin_number = event['pin']
+        pin_status = event['status']
+        print(f'Pin {pin_number} status changed to {pin_status}')
+        GPIO.output(pin_number, GPIO.HIGH if pin_status else GPIO.LOW)
+    else:
+        print('No PinStatusChanged event found in the transaction receipt.')
     return render_template('index.html')
 
 if __name__ == '__main__':
