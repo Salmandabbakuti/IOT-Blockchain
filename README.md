@@ -45,6 +45,10 @@ npx hardhat compile
 pip3 install -r requirements.txt
 
 python3 app.py
+=======
+pip install -r requirements.txt # or `pip3 install -r requirements.txt`
+
+python app.py # or `py app.py` or `python3 app.py`
 ```
 
 Open http://localhost:8000 in your browser to see the app and Interact with the IoT device.
