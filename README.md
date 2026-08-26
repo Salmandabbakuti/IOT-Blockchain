@@ -42,6 +42,10 @@ npx hardhat compile
 4. Install python dependencies and start the app:
 
 ```bash
+pip3 install -r requirements.txt
+
+python3 app.py
+=======
 pip install -r requirements.txt # or `pip3 install -r requirements.txt`
 
 python app.py # or `py app.py` or `python3 app.py`

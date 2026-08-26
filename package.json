@@ -1,19 +1,18 @@
 {
-  "name": "iot-blockchain-demo",
-  "version": "2.2.0",
-  "description": "First implementation of enhanced security in IoT using Blockchain",
-  "main": "",
+  "name": "iot-blockchain-hh",
+  "version": "2.3.1",
+  "description": "A Hardhat project for IoT Blockchain",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-node": "npx hardhat node",
-    "compile": "npx hardhat compile",
-    "deploy": "npx hardhat deploy"
+    "compile": "npx hardhat compile"
   },
   "author": "Salman Dabbakuti",
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
-    "hardhat": "2.20.1",
-    "pip": "0.0.1"
+    "@types/node": "^24.13.3",
+    "hardhat": "^3.14.0",
+    "typescript": "~7.0.2"
   }
 }
