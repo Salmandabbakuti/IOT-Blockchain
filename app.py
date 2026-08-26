@@ -1,7 +1,3 @@
-#  * SPDX-License-Identifier: MIT
-#  * Licensed to @Author: Salman Dabbakuti(https://github.com/Salmandabbakuti)
-#  * See the License for the specific language governing permissions and limitations under the License.
-
 import json
 from web3 import Web3, HTTPProvider
 # import RPi.GPIO as GPIO # for real rasp-pi

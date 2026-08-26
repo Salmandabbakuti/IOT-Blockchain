@@ -42,9 +42,9 @@ npx hardhat compile
 4. Install python dependencies and start the app:
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
-python app.py
+python3 app.py
 ```
 
 Open http://localhost:8000 in your browser to see the app and Interact with the IoT device.

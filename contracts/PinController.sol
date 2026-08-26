@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.28;
+pragma solidity 0.8.36;
 
 contract PinController {
-    address owner;
+    address immutable owner;
 
     enum PinStatus {
         Off,
@@ -18,7 +18,7 @@ contract PinController {
     }
 
     function setPinStatus(uint8 _pin, PinStatus _pinStatus) external {
-        require(msg.sender == owner);
+        require(msg.sender == owner, "No permission!");
 
         pinStatus[_pin] = _pinStatus;
         emit PinStatusChanged(_pin, _pinStatus);
