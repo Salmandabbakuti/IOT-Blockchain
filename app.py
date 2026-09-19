@@ -1,8 +1,12 @@
 import json
 from web3 import Web3, HTTPProvider
-# import RPi.GPIO as GPIO # for real rasp-pi
-from RPiSim.GPIO import GPIO
 from flask import Flask, render_template
+from gpiozero import Device, DigitalOutputDevice
+from gpiozero.pins.mock import MockFactory
+
+# Set the pin factory to MockFactory for testing purposes
+# comment this when running on a Raspberry Pi with actual GPIO pins
+Device.pin_factory = MockFactory()
 
 # Pin mapping
 pin_mapping = {
@@ -34,12 +38,7 @@ pin_mapping = {
     'twentysix': 26
 }
 
-# Set up GPIO pins
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-pinList = list(pin_mapping.values())
-for pin in pinList:
-    GPIO.setup(pin, GPIO.OUT)
+gpio_devices = {pin: DigitalOutputDevice(pin) for pin in pin_mapping.values()}
 
 # Load contract artifacts
 artifacts_path = './artifacts/contracts/PinController.sol/PinController.json'
@@ -59,7 +58,7 @@ print('Contract deployed at:', tx_receipt.contractAddress)
 contract_instance = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
 
 # Get initial pin status
-for i in pinList:
+for i in pin_mapping.values():
     pin_status = contract_instance.functions.pinStatus(i).call()
     print(f'Pin {i} status is {pin_status}')
 
@@ -89,8 +88,11 @@ def set_pin_status(pin_id, action):
         event = rich_logs[0]['args']
         pin_number = event['pin']
         pin_status = event['status']
-        print(f'Pin {pin_number} status changed to {pin_status}')
-        GPIO.output(pin_number, GPIO.HIGH if pin_status else GPIO.LOW)
+        gpio = gpio_devices[pin_number]
+        gpio.on() if pin_status else gpio.off()
+        # print "GPIO {pin} → 🟢 ON or ⚫️ OFF
+        print(f'GPIO {pin_number} → {"🟢 ON" if gpio.value else "⚫️ OFF"}')
+        
     else:
         print('No PinStatusChanged event found in the transaction receipt.')
     return render_template('index.html')

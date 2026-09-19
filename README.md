@@ -6,16 +6,9 @@ A simple IoT and Blockchain based application to demonstrate the use of blockcha
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/en/download/)
-- [Python](https://www.python.org/downloads/)
-- Windows 8+ (for simulating GPIO pins on Windows), Raspberry Pi (for using actual GPIO pins)
-- [Windows Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) - Only for Windows (Simulating GPIO pins on Windows)
-
-> Note: _Windows Build Tools is required to install web3. Install through Powershell(Admin) if not installed already_
-
-```bash
-npm install -g windows-build-tools
-```
+- [Node.js 22+](https://nodejs.org/en/download/)
+- [Python 3+](https://www.python.org/downloads/)
+- [Raspberry Pi](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) (for actual GPIO control, optional)
 
 ### Steps
 
@@ -59,8 +52,7 @@ Open http://localhost:8000 in your browser to see the app and Interact with the 
 - [Web3.py](https://web3py.readthedocs.io/en/stable/) - Python library for interacting with Ethereum blockchain
 - [Hardhat](https://hardhat.org/) - Ethereum development environment for compiling, testing, deploying, and interacting with smart contracts
 - [Solidity](https://docs.soliditylang.org) - Ethereum's smart contract programming language
-- [GPIO Simulator](https://pypi.org/project/GPIOSimulator/) - Python library for simulating GPIO pins
-- [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) - Python library for accessing GPIO pins on Raspberry Pi
+- [gpiozero](https://gpiozero.readthedocs.io/en/stable/) - A simple interface to GPIO devices with Raspberry Pi
 
 ## Safety
 

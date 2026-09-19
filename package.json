@@ -1,6 +1,6 @@
 {
   "name": "iot-blockchain-hh",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "A Hardhat project for IoT Blockchain",
   "type": "module",
   "scripts": {
@@ -11,8 +11,8 @@
   "author": "Salman Dabbakuti",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^24.13.3",
-    "hardhat": "^3.14.0",
+    "@types/node": "^25.9.8",
+    "hardhat": "^3.17.0",
     "typescript": "~7.0.2"
   }
 }
