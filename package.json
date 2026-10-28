@@ -11,7 +11,7 @@
   "author": "Salman Dabbakuti",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^25.9.8",
+    "@types/node": "^26.0.0",
     "hardhat": "^3.17.0",
     "typescript": "~7.0.2"
   }
